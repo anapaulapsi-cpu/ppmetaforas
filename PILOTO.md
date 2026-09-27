@@ -6,6 +6,14 @@ Registrado em 24 de setembro de 2026. Usar como referência sempre que for refaz
 
 Primeiro organizar e aprovar as mudanças; depois implementá-las em um único pacote na cópia do aplicativo. Evitar pequenas alterações isoladas, retrabalho e gasto desnecessário de créditos.
 
+## Atualização de escopo — rodada de teste com 5 psicólogas
+
+Decisão revisada: nesta rodada, apenas **O Elefante Acorrentado** fica aberto no app. As outras metáforas aparecem no mapa (para dar o gostinho do que vem por aí), mas com um selo "Chegando com o retorno do piloto" e sem acesso. Objetivo: aprofundar e validar a experiência completa (as 5 estações) em uma única metáfora antes de replicar o padrão para as demais.
+
+- Indicador de progresso visível durante a jornada da metáfora aberta, mostrando quantas das 5 etapas já foram concluídas.
+- Ao concluir a 5ª etapa (Compartilhar), aparece um convite para deixar o retorno — a aba Retorno deixa de ser só um item de menu e passa a ser também o "ponto de chegada" natural da experiência completa.
+- Implementado em `index.html`: `PILOTO_ABERTAS` controla quais metáforas estão liberadas.
+
 ## Escopo do piloto
 
 - O piloto será realizado com 5 psicólogas de confiança.

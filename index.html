@@ -6,17 +6,17 @@
 <title>O Poder das Metáforas na Prática Clínica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Paleta: Sage Green 98A086 · Dusty Rose A76D5E · Golden Tan C4A071 · Warm Beige DFCCB1 · Terracotta Brown 846044 */
+/* Paleta: identidade do site — Apricot, Blush, Cobre, Vinho, Oliva, Musgo, Sol */
 :root{
-  --bg:#F7F1E8; --surface:#FFFCF7; --ink:#34281F; --muted:#6F5F52; --line:#E6D9C7;
-  --brown:#846044; --copper:#A76D5E; --caramel:#C4A071; --beige:#DFCCB1; --sage:#98A086;
-  --teal:#5F6C4F; --teal-soft:#E9ECE0; --copper-soft:#F3E3DC; --tan-soft:#F4EAD9;
-  --on-brown:#FFFCF7; --shadow:0 1px 2px rgba(92,64,44,.06),0 12px 32px -12px rgba(92,64,44,.22);
-  --danger:#9A3B32;
-  --sans:"Mulish", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --serif:"Cormorant Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --bg:#FBF4EC; --surface:#FFFBF6; --ink:#2E1A20; --muted:#6F5654; --line:#EBD9CB;
+  --brown:#AB482D; --copper:#CE5A43; --caramel:#F09367; --beige:#FBE7E1; --sage:#889063;
+  --teal:#5B6240; --teal-soft:#EEF0E3; --copper-soft:#FBE7E1; --tan-soft:#FBF0DE;
+  --on-brown:#FFFBF6; --shadow:0 1px 2px rgba(106,31,58,.06),0 14px 34px -14px rgba(106,31,58,.22);
+  --danger:#9A3B27;
+  --sans:"Outfit", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif:"Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
@@ -24,19 +24,19 @@
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --bg:#1D1915; --surface:#27211C; --ink:#F2E9DD; --muted:#BDAE9D; --line:#3E352C;
-    --brown:#DDB892; --copper:#D89C8B; --caramel:#D6B686; --beige:#4A3E31; --sage:#AEB79C;
-    --teal:#B7C1A3; --teal-soft:#2A2F24; --copper-soft:#3A2925; --tan-soft:#332A1F;
-    --on-brown:#1D1915; --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -12px rgba(0,0,0,.6);
+    --bg:#241417; --surface:#2E1B1F; --ink:#F5E8DE; --muted:#CDB3AC; --line:#4A2C30;
+    --brown:#E8916A; --copper:#E8917A; --caramel:#E8B36F; --beige:#4A3A30; --sage:#B9C29A;
+    --teal:#A9B98C; --teal-soft:#333B27; --copper-soft:#3A2620; --tan-soft:#3A2E1E;
+    --on-brown:#2E1B1F; --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -12px rgba(0,0,0,.6);
     --danger:#E08A80;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#1D1915; --surface:#27211C; --ink:#F2E9DD; --muted:#BDAE9D; --line:#3E352C;
-  --brown:#DDB892; --copper:#D89C8B; --caramel:#D6B686; --beige:#4A3E31; --sage:#AEB79C;
-  --teal:#B7C1A3; --teal-soft:#2A2F24; --copper-soft:#3A2925; --tan-soft:#332A1F;
-  --on-brown:#1D1915; --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -12px rgba(0,0,0,.6);
+  --bg:#241417; --surface:#2E1B1F; --ink:#F5E8DE; --muted:#CDB3AC; --line:#4A2C30;
+  --brown:#E8916A; --copper:#E8917A; --caramel:#E8B36F; --beige:#4A3A30; --sage:#B9C29A;
+  --teal:#A9B98C; --teal-soft:#333B27; --copper-soft:#3A2620; --tan-soft:#3A2E1E;
+  --on-brown:#2E1B1F; --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -12px rgba(0,0,0,.6);
   --danger:#E08A80;
 }
 *,*::before,*::after{box-sizing:inherit}
@@ -121,25 +121,36 @@ p{margin:0 0 1em}
 .facts{display:flex;flex-wrap:wrap;gap:10px 26px;margin:26px 0 0;padding:0;list-style:none;font-size:.86rem;color:var(--muted)}
 .facts li{display:flex;align-items:baseline;gap:7px}
 .facts b{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--brown);line-height:1}
+.selos{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:24px 0 0;padding:0}
+.selos li{padding:8px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.86rem;color:var(--ink);display:flex;align-items:center;gap:8px}
+.selos li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--copper)}
+.assina{position:absolute;left:-18px;bottom:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow);font-size:.85rem;line-height:1.35;color:var(--muted);max-width:228px}
+.assina b{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.05rem;color:var(--brown);margin-bottom:2px}
 @media (max-width:760px){
   .hero{grid-template-columns:1fr;gap:28px}
   .hero-art{order:-1;max-width:420px;margin-right:18px}
   .hero-art img{aspect-ratio:5/4;border-radius:200px 200px 16px 16px}
   .hero-art::before{border-radius:200px 200px 16px 16px}
+  .assina{left:8px;bottom:14px}
 }
+.faixa{background:var(--brown);color:var(--on-brown);overflow:hidden;padding:14px 0;white-space:nowrap;margin:44px 0}
+.faixa .trilho{display:inline-flex;animation:corre 34s linear infinite}
+.faixa span{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.1rem,2vw,1.35rem);padding:0 20px;display:inline-flex;align-items:center;gap:40px}
+.faixa span::after{content:"✦";font-style:normal;font-size:.8rem;color:var(--caramel)}
+@keyframes corre{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.faixa .trilho{animation:none}}
 .q{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,4.6vw,2.8rem);line-height:1.12;margin:0 auto;max-width:760px;text-align:center}
 .q span{display:block}
 .q span:nth-child(3){color:var(--copper);font-style:italic}
 .q-lead{text-align:center;margin:18px auto 0;max-width:58ch}
 
-.path{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.path{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .path li{position:relative;font-size:.86rem;color:var(--muted);padding:18px 16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
-.path li:nth-child(6n+1){background:var(--tan-soft)}
-.path li:nth-child(6n+2){background:var(--teal-soft)}
-.path li:nth-child(6n+3){background:var(--copper-soft)}
-.path li:nth-child(6n+4){background:var(--tan-soft)}
-.path li:nth-child(6n+5){background:var(--teal-soft)}
-.path li:nth-child(6n+6){background:var(--copper-soft)}
+.path li:nth-child(5n+1){background:var(--tan-soft)}
+.path li:nth-child(5n+2){background:var(--teal-soft)}
+.path li:nth-child(5n+3){background:var(--copper-soft)}
+.path li:nth-child(5n+4){background:var(--tan-soft)}
+.path li:nth-child(5n+5){background:var(--teal-soft)}
 .path b{display:block;font-family:var(--serif);font-size:1.9rem;font-weight:600;color:var(--brown);line-height:1;margin-bottom:10px}
 .path strong{display:block;color:var(--ink);font-weight:700;font-size:.95rem}
 @media (max-width:900px){.path{grid-template-columns:repeat(3,1fr)}}
@@ -170,6 +181,9 @@ p{margin:0 0 1em}
 .m-card p{margin:0;color:var(--muted);font-size:.93rem}
 .m-card .go{margin-top:auto;padding-top:10px;font-size:.84rem;font-weight:700;color:var(--brown)}
 .m-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--cat)}
+.m-card.locked{filter:grayscale(.5);opacity:.72}
+.m-card.locked:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.m-card.locked .flag{margin-top:auto}
 .cat-crencas{--cat:var(--sage);--cat-soft:var(--teal-soft)}
 .cat-emocoes{--cat:var(--copper);--cat-soft:var(--copper-soft)}
 .cat-relacoes{--cat:var(--caramel);--cat-soft:var(--tan-soft)}
@@ -193,6 +207,7 @@ p{margin:0 0 1em}
 .journey a i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--tan-soft);font-size:.76rem;font-weight:800;color:var(--brown)}
 .journey a[aria-current="step"]{color:var(--ink);border-color:var(--brown);background:var(--tan-soft)}
 .journey a[aria-current="step"] i{background:var(--brown);color:var(--on-brown)}
+.journey-progress{margin:-18px 0 24px;font-size:.82rem;font-weight:600;color:var(--sage)}
 
 .story{font-family:var(--serif);font-size:1.34rem;line-height:1.7;padding:6px 0 6px 28px;margin:6px 0 24px;max-width:62ch;border-left:1px solid var(--caramel)}
 .story p{margin:0 0 1em}
@@ -292,9 +307,8 @@ textarea:focus,input[type=text]:focus{border-color:var(--copper);outline:none;bo
     <nav class="nav" aria-label="Principal">
       <a href="#/" data-nav="inicio">Início</a>
       <a href="#/metaforas" data-nav="metaforas">Metáforas</a>
-      <a href="#/registros" data-nav="registros">Preparações</a>
-      <a href="#/retorno" data-nav="retorno">Retorno</a>
-      <a href="#/sobre" data-nav="sobre">Sobre</a>
+      <a href="#/registros" data-nav="registros">Preparar e aplicar</a>
+      <a href="#/sobre" data-nav="sobre">Conheça a Ana</a>
     </nav>
   </div>
 </header>
@@ -857,14 +871,24 @@ const foto=(m,cls)=>FOTOS[m.id]?`<img class="${cls}" src="${FOTOS[m.id]}" alt="$
 
 const JORNADA = [["compreender","Conheça e compreenda"],["como-faco","Como eu faço"],["autopratica","Autoprática"],["preparar","Preparar e aplicar"],["compartilhar","Compartilhar"]];
 
+/* Piloto: só o Elefante Acorrentado fica aberto nesta rodada de teste. As demais aparecem no mapa, mas ficam bloqueadas até o próximo pacote. */
+const PILOTO_ABERTAS = ["elefante"];
+
 /* ---------- utilidades ---------- */
 const store = {
   get(k,d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
   set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } }
 };
-const K_REG="pdm:preparacoes", K_AUTO="pdm:autopratica:v2";
+const K_REG="pdm:preparacoes", K_AUTO="pdm:autopratica:v2", K_PROG="pdm:progresso:v1";
 const getRegs=()=>store.get(K_REG,[]).filter(r=>find(r.metafora));
 const saveRegs=r=>store.set(K_REG,r);
+const getProg=()=>store.get(K_PROG,{});
+function markVisited(mid,step){
+  const p=getProg(); p[mid]=p[mid]||[];
+  if(!p[mid].includes(step)){ p[mid].push(step); store.set(K_PROG,p); }
+}
+const progDone=mid=>getProg()[mid]||[];
+const journeyComplete=mid=>progDone(mid).length>=JORNADA.length;
 const $app=document.getElementById("app");
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const find=id=>METAFORAS.find(m=>m.id===id);
@@ -888,18 +912,31 @@ function viewInicio(){
   return `
   <section class="hero">
     <div class="hero-title">
-      <p class="kicker">Metáforas terapêuticas para psicólogas</p>
-      <h1>O Poder das Metáforas<span class="sub">na Prática Clínica</span></h1>
-      <p class="tag">Conectando mentes e corações: uma jornada com metáforas terapêuticas, do raciocínio clínico à sessão.</p>
-      <div class="btn-row"><a class="btn" href="#/metaforas">Abrir as metáforas →</a><a class="btn ghost" href="#/sobre">Conhecer a Ana</a></div>
+      <p class="kicker">App para psicólogas</p>
+      <h1>Aprenda a construir o <span class="sub">raciocínio clínico</span> através das metáforas terapêuticas</h1>
+      <p class="tag">Você aprende como usar cada metáfora, para quem e em que momento — e vive cada uma em você antes de levá-la à sessão.</p>
+      <ul class="selos">
+        <li>TCC · Esquema · Apego</li>
+        <li>Autoprática para Psi</li>
+        <li>Passo a passo de aplicação</li>
+      </ul>
+      <div class="btn-row"><a class="btn" href="#/metaforas">Quero construir meu raciocínio clínico →</a><a class="btn ghost" href="#/sobre">Conheça a Ana</a></div>
       <ul class="facts">
         <li><b>${METAFORAS.length}</b> metáforas</li>
         <li><b>3</b> lentes clínicas</li>
         <li><b>${JORNADA.length}</b> etapas por metáfora</li>
       </ul>
     </div>
-    <div class="hero-art"><img src="${IMG.hero}" alt="Ilustração da capa do livro: borboletas, asas e flores sobre traços dourados"></div>
+    <div class="hero-art">
+      <img src="${IMG.hero}" alt="Ilustração da capa do livro: borboletas, asas e flores sobre traços dourados">
+      <p class="assina"><b>Juntar as peças</b>traduzir o que parece confuso e transformar compreensão em direção.</p>
+    </div>
   </section>
+
+  <div class="faixa" aria-hidden="true"><div class="trilho">
+    <span>Raciocínio clínico</span><span>Metáforas terapêuticas</span><span>Autoprática para Psi</span><span>TCC</span><span>Terapia do Esquema</span><span>Teoria do Apego</span>
+    <span>Raciocínio clínico</span><span>Metáforas terapêuticas</span><span>Autoprática para Psi</span><span>TCC</span><span>Terapia do Esquema</span><span>Teoria do Apego</span>
+  </div></div>
 
   <div class="divider"><svg viewBox="0 0 46 20" aria-hidden="true"><path d="M2 10h42" stroke="currentColor" stroke-width="1" fill="none"/><path d="M14 10c-2-4-6-5-9-4 2 3 5 4 9 4Z M23 10c1-4 5-6 9-6-1 3-4 6-9 6Z M32 10c-2 4-6 5-9 4 2-3 5-4 9-4Z" fill="currentColor"/></svg></div>
   <h2 class="q" aria-label="Por que esta metáfora, para esta pessoa, neste momento?"><span>Por que esta metáfora,</span><span>para esta pessoa,</span><span>neste momento?</span></h2>
@@ -909,12 +946,11 @@ function viewInicio(){
   <p class="kicker">Como funciona</p>
   <h2 style="margin-top:0">A jornada dentro de cada metáfora</h2>
   <ol class="path">
-    <li><b>1</b><strong>Conhecer</strong>a história</li>
-    <li><b>2</b><strong>Compreender</strong>por três lentes</li>
-    <li><b>3</b><strong>Vivenciar</strong>na autoprática</li>
-    <li><b>4</b><strong>Preparar</strong>a intervenção</li>
-    <li><b>5</b><strong>Aplicar</strong>com presença</li>
-    <li><b>6</b><strong>Acompanhar</strong>e registrar</li>
+    <li><b>1</b><strong>Conheça e compreenda</strong>a história e as três lentes</li>
+    <li><b>2</b><strong>Como eu, Ana, faço</strong>na prática clínica</li>
+    <li><b>3</b><strong>Autoprática para Psi</strong>vivencie antes de aplicar</li>
+    <li><b>4</b><strong>Preparar e aplicar</strong>antes, durante e depois</li>
+    <li><b>5</b><strong>Compartilhar</strong>com a pessoa atendida</li>
   </ol>
 
   <div class="divider"><svg viewBox="0 0 46 20" aria-hidden="true"><path d="M2 10h42" stroke="currentColor" stroke-width="1" fill="none"/><path d="M14 10c-2-4-6-5-9-4 2 3 5 4 9 4Z M23 10c1-4 5-6 9-6-1 3-4 6-9 6Z M32 10c-2 4-6 5-9 4 2-3 5-4 9-4Z" fill="currentColor"/></svg></div>
@@ -946,27 +982,31 @@ function viewInicio(){
 
 function viewMetaforas(){
   return `
-  <h1>Metáforas</h1>
+  <h1>Conheça e compreenda as metáforas</h1>
   <p class="lead">Cada metáfora traz a história, a leitura clínica pelas três lentes, a forma como eu a conduzo, uma autoprática e um caminho para preparar a aplicação.</p>
   ${CATEGORIAS.map(c=>`
     <section class="cat cat-${c.id}">
       <div class="cat-head"><span class="sw" aria-hidden="true"></span><h2>${esc(c.nome)}</h2></div>
       <p class="muted">${esc(c.desc)}</p>
       <div class="library">
-        ${METAFORAS.filter(m=>m.cat===c.id).map(m=>`
-          <a class="m-card cat-${m.cat}${FOTOS[m.id]?" has-photo":""}" href="#/m/${m.id}/compreender">
+        ${METAFORAS.filter(m=>m.cat===c.id).map(m=>{
+          const aberta=PILOTO_ABERTAS.includes(m.id);
+          const tag=aberta?"a":"div";
+          return `
+          <${tag} class="m-card cat-${m.cat}${FOTOS[m.id]?" has-photo":""}${aberta?"":" locked"}"${aberta?` href="#/m/${m.id}/compreender"`:""}>
             ${foto(m,"m-photo")}
             <h3>${esc(m.titulo)}</h3>
             <p>${esc(m.resumo)}</p>
-            ${m.origem?`<span class="flag">Autoria a confirmar</span>`:""}
-            <span class="go">Explorar a metáfora →</span>
-          </a>`).join("")}
+            ${aberta?`<span class="go">Conhecer a metáfora →</span>`:`<span class="flag">Chegando com o retorno do piloto</span>`}
+          </${tag}>`;}).join("")}
       </div>
     </section>`).join("")}`;
 }
 
 function journeyNav(m,step){
-  return `<nav class="journey" aria-label="Etapas da metáfora">${JORNADA.map(([k,l],i)=>`<a href="#/m/${m.id}/${k}" ${k===step?'aria-current="step"':''}><i>${i+1}</i>${l}</a>`).join("")}</nav>`;
+  const done=progDone(m.id);
+  const nav=`<nav class="journey" aria-label="Etapas da metáfora">${JORNADA.map(([k,l],i)=>`<a href="#/m/${m.id}/${k}" ${k===step?'aria-current="step"':''}><i>${done.includes(k)?"✓":i+1}</i>${l}</a>`).join("")}</nav>`;
+  return `${nav}<p class="journey-progress">${done.length} de ${JORNADA.length} etapas concluídas</p>`;
 }
 
 function viewCompreender(m){
@@ -1112,7 +1152,12 @@ function viewCompartilhar(m){
     <h3>Prévia do material</h3>
   </div>
   <article class="share-sheet" id="sheet">${sheetHTML(m)}</article>
-  <div class="btn-row no-print"><button class="btn" data-act="copiar-share" data-m="${m.id}">Copiar texto</button></div>`;
+  <div class="btn-row no-print"><button class="btn" data-act="copiar-share" data-m="${m.id}">Copiar texto</button></div>
+  ${journeyComplete(m.id)?`
+  <div class="note narrow no-print" style="margin-top:44px">
+    <p><strong>Você percorreu a experiência completa com ${esc(m.titulo)}.</strong> Antes de seguir, separei um espaço para você deixar suas notas — elas vão decidir o que permanece, o que muda e o que ainda falta antes de esta jornada chegar às outras metáforas.</p>
+    <div class="btn-row" style="margin-bottom:0"><a class="btn small" href="#/retorno">Deixar meu retorno →</a></div>
+  </div>`:""}`;
 }
 function sheetHTML(m){
   const sel=shareSel[m.id], qs=perguntas(m.id), msg=tplText(m.id+"-mensagem");
@@ -1187,6 +1232,7 @@ const RET_Q=[
 const getRet=()=>store.get(K_RET,{nome:"",metaforas:[]});
 function viewRetorno(){
   const r=getRet();
+  const completou=PILOTO_ABERTAS.some(journeyComplete);
   const q=x=>{
     if(x.t==="radio") return `<fieldset><legend>${esc(x.l)}</legend><div class="opts">${x.o.map(o=>`<label><input type="radio" name="ret-${x.k}" data-ret="${x.k}" value="${esc(o)}" ${r[x.k]===o?"checked":""}>${esc(o)}</label>`).join("")}</div></fieldset>`;
     const hint=x.h?`<span class="hint">${esc(x.h)}</span>`:"";
@@ -1194,7 +1240,7 @@ function viewRetorno(){
     return `<div class="field ret-q"><label for="ret-${x.k}">${esc(x.l)}${hint}</label><textarea id="ret-${x.k}" data-ret="${x.k}">${esc(r[x.k]||"")}</textarea></div>`;
   };
   return `<div class="narrow"><h1>Seu retorno sobre o piloto</h1>
-  <p class="lead">Obrigada por testar comigo. Suas respostas vão decidir o que permanece, o que muda e o que ainda falta antes de o app chegar a outras colegas.</p>
+  <p class="lead">${completou?"Você concluiu a experiência completa com a metáfora do piloto. Obrigada por chegar até aqui.":"Obrigada por testar comigo."} Suas respostas vão decidir o que permanece, o que muda e o que ainda falta antes de o app chegar a outras colegas.</p>
   <div class="note"><p>As respostas ficam guardadas neste navegador até você enviar. Nada vai para um servidor: você me manda o texto pelo WhatsApp ou copia e cola onde preferir. Não inclua dados que identifiquem pessoas atendidas.</p></div>
   <div class="ret-form">
     <div class="field ret-q"><label for="ret-nome">Seu nome<span class="hint">Para eu saber de quem é o retorno.</span></label><input type="text" id="ret-nome" data-ret="nome" value="${esc(r.nome||"")}"></div>
@@ -1231,9 +1277,12 @@ function render(){
   else if(parts[0]==="sobre"){ html=viewSobre(); nav="sobre"; }
   else if(parts[0]==="retorno"){ html=viewRetorno(); nav="retorno"; }
   else if(parts[0]==="m"&&find(parts[1])){
-    const m=find(parts[1]); const step=parts[2]||"compreender"; nav="metaforas";
+    const m=find(parts[1]);
+    if(!PILOTO_ABERTAS.includes(m.id)){ location.hash="#/metaforas"; return; }
+    const step=parts[2]||"compreender"; nav="metaforas";
     const cat=CATEGORIAS.find(c=>c.id===m.cat);
     const views={"compreender":viewCompreender,"como-faco":viewComoFaco,"autopratica":viewAutopratica,"preparar":viewPreparar,"compartilhar":viewCompartilhar};
+    markVisited(m.id,step);
     html=`<div class="m-head"><a class="back" href="#/metaforas">Todas as metáforas</a>${FOTOS[m.id]?`<figure class="m-banner">${foto(m,"")}</figure>`:""}<p class="kicker">${esc(cat.nome)}</p><h1>${esc(m.titulo)}</h1><p class="lead">${esc(m.resumo)}</p></div>${journeyNav(m,step)}${(views[step]||viewCompreender)(m,params)}`;
     if(step==="autopratica") after=()=>hydrateAuto(m);
   } else html=viewInicio();
