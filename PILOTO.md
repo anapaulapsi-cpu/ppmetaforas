@@ -14,6 +14,15 @@ Decisão revisada: nesta rodada, apenas **O Elefante Acorrentado** fica aberto n
 - Ao concluir a 5ª etapa (Compartilhar), aparece um convite para deixar o retorno — a aba Retorno deixa de ser só um item de menu e passa a ser também o "ponto de chegada" natural da experiência completa.
 - Implementado em `index.html`: `PILOTO_ABERTAS` controla quais metáforas estão liberadas.
 
+## Ajustes pendentes no Retorno (pesquisa) — anotado, ainda não implementado
+
+Feedback da Ana sobre as perguntas do Retorno, para alterar quando ela pedir:
+
+- A pesquisa não deve ser sobre "esta metáfora" (o Elefante especificamente) e sim sobre **o uso de metáfora de forma mais geral** — estamos avaliando o conhecimento e a relação da psicóloga com metáforas terapêuticas, não só a experiência com esta história.
+- Remover a pergunta "Quais metáforas você explorou?" (checkbox) — não é necessária, já que só uma metáfora está aberta.
+- Nem toda psicóloga vai ter aplicado a metáfora numa sessão real ainda. Trocar/complementar perguntas que assumem uso real por algo como "Você usaria isso com seu paciente?" (intenção, não só experiência já vivida).
+- Lembrar, na pesquisa, que dentro do app ela teve acesso a todas as informações das 5 etapas antes de responder (isso pode virar uma frase de contexto na abertura da pesquisa).
+
 ## Escopo do piloto
 
 - O piloto será realizado com 5 psicólogas de confiança.
