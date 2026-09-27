@@ -1316,7 +1316,7 @@ function render(){
 window.addEventListener("hashchange",render);
 
 /* ---------- eventos ---------- */
-let saveTimer;
+let saveTimer, pendingAuto=null, pendingReg=null;
 function flash(id){ const el=document.getElementById(id); if(el){ el.textContent="Salvo neste navegador"; clearTimeout(el._h); el._h=setTimeout(()=>el.textContent="",1800); } }
 function currentM(){ const p=parse().parts; return p[0]==="m"?find(p[1]):null; }
 function refreshSheet(){ const m=currentM(); const s=document.getElementById("sheet"); if(m&&s) s.innerHTML=sheetHTML(m); }
@@ -1326,14 +1326,25 @@ $app.addEventListener("input",e=>{
   if(t.dataset.ret&&t.type!=="radio"){ saveRet(t.dataset.ret,t.value); return; }
   const form=t.closest("[data-auto]");
   if(form&&t.classList.contains("ap")){
-    const all=store.get(K_AUTO,{}); all[form.dataset.auto]=all[form.dataset.auto]||{}; all[form.dataset.auto][t.dataset.k]=t.value;
-    clearTimeout(saveTimer); saveTimer=setTimeout(()=>{ if(store.set(K_AUTO,all)) flash("savedAuto"); },350); return;
+    if(!pendingAuto||pendingAuto.mid!==form.dataset.auto) pendingAuto={mid:form.dataset.auto,changes:{}};
+    pendingAuto.changes[t.dataset.k]=t.value;
+    clearTimeout(saveTimer); saveTimer=setTimeout(()=>{
+      const all=store.get(K_AUTO,{}); all[pendingAuto.mid]=all[pendingAuto.mid]||{};
+      Object.entries(pendingAuto.changes).forEach(([k,v])=>{ all[pendingAuto.mid][k]=v; });
+      pendingAuto=null;
+      if(store.set(K_AUTO,all)) flash("savedAuto");
+    },350); return;
   }
   if(t.dataset.share==="mov"){ const m=currentM(); shareSel[m.id].mov=t.value; refreshSheet(); return; }
   if(t.dataset.reg&&t.dataset.path){
-    const regs=store.get(K_REG,[]); const r=regs.find(x=>x.id===t.dataset.reg); if(!r) return;
-    const [a,b]=t.dataset.path.split("."); if(b) r[a][b]=t.value; else r[a]=t.value; r.atualizado=Date.now();
-    clearTimeout(saveTimer); saveTimer=setTimeout(()=>{ if(saveRegs(regs)) flash("savedReg"); },350);
+    if(!pendingReg||pendingReg.id!==t.dataset.reg) pendingReg={id:t.dataset.reg,changes:{}};
+    pendingReg.changes[t.dataset.path]=t.value;
+    clearTimeout(saveTimer); saveTimer=setTimeout(()=>{
+      const regs=store.get(K_REG,[]); const r=regs.find(x=>x.id===pendingReg.id); if(!r){ pendingReg=null; return; }
+      Object.entries(pendingReg.changes).forEach(([path,v])=>{ const [a,b]=path.split("."); if(b) r[a][b]=v; else r[a]=v; });
+      r.atualizado=Date.now(); pendingReg=null;
+      if(saveRegs(regs)) flash("savedReg");
+    },350); return;
   }
 });
 $app.addEventListener("change",e=>{
