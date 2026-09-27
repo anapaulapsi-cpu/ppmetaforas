@@ -90,7 +90,7 @@ p{margin:0 0 1em}
 .btn.danger{background:transparent;border-color:var(--danger);color:var(--danger)}
 .btn.danger.armed{background:var(--danger);color:var(--surface)}
 .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
-@media (prefers-reduced-motion:reduce){.btn,.m-card,.nav a{transition:none}.btn:hover,.m-card:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.btn,.m-card,.nav a{transition:none}.btn:hover,.m-card:hover{transform:none}.seta{animation:none}}
 
 /* Ramo botânico */
 .sprig{display:block;color:var(--sage)}
@@ -103,6 +103,7 @@ p{margin:0 0 1em}
 .opts label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:8px 15px;font-weight:500;font-size:.9rem;cursor:pointer}
 .opts input{accent-color:var(--copper);margin:0}
 .opts label:has(input:checked){border-color:var(--copper);background:var(--copper-soft)}
+.scale-hint{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin:6px 2px 0}
 .ret-q{margin:0 0 26px}
 .ret-q > .ql{display:block;font-weight:600;margin-bottom:6px}
 .ret-form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 26px 8px;margin-top:22px;box-shadow:var(--shadow)}
@@ -124,8 +125,9 @@ p{margin:0 0 1em}
 .selos{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:24px 0 0;padding:0}
 .selos li{padding:8px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.86rem;color:var(--ink);display:flex;align-items:center;gap:8px}
 .selos li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--copper)}
-.assina{position:absolute;left:-18px;bottom:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow);font-size:.85rem;line-height:1.35;color:var(--muted);max-width:228px}
+.assina{position:absolute;left:-18px;bottom:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow);font-size:.85rem;line-height:1.35;color:var(--muted);max-width:250px;display:flex;gap:10px;align-items:flex-start}
 .assina b{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.05rem;color:var(--brown);margin-bottom:2px}
+.assina .assina-foto{width:38px;height:38px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none;margin-top:1px}
 @media (max-width:760px){
   .hero{grid-template-columns:1fr;gap:28px}
   .hero-art{order:-1;max-width:420px;margin-right:18px}
@@ -180,6 +182,9 @@ p{margin:0 0 1em}
 .m-card h3{margin:0;font-family:var(--serif);font-weight:600;font-size:1.6rem;line-height:1.1}
 .m-card p{margin:0;color:var(--muted);font-size:.93rem}
 .m-card .go{margin-top:auto;padding-top:10px;font-size:.84rem;font-weight:700;color:var(--brown)}
+.seta{display:inline-block;color:var(--copper);animation:nudge 1.7s ease-in-out infinite}
+.btn .seta,.btn.ghost .seta{color:inherit}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
 .m-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--cat)}
 .m-card.locked{filter:grayscale(.5);opacity:.72}
 .m-card.locked:hover{transform:none;box-shadow:none;border-color:var(--line)}
@@ -921,7 +926,7 @@ function viewInicio(){
         <li>Autoprática para Psi</li>
         <li>Passo a passo de aplicação</li>
       </ul>
-      <div class="btn-row"><a class="btn" href="#/metaforas">Quero construir meu raciocínio clínico →</a><a class="btn ghost" href="#/sobre">Conheça a Ana</a></div>
+      <div class="btn-row"><a class="btn" href="#/metaforas">Quero construir meu raciocínio clínico <span class="seta">→</span></a><a class="btn ghost" href="#/sobre">Conheça a Ana</a></div>
       <ul class="facts">
         <li><b>${METAFORAS.length}</b> metáforas</li>
         <li><b>3</b> lentes clínicas</li>
@@ -930,7 +935,7 @@ function viewInicio(){
     </div>
     <div class="hero-art">
       <img src="${IMG.hero}" alt="Ilustração da capa do livro: borboletas, asas e flores sobre traços dourados">
-      <p class="assina"><b>Juntar as peças</b>traduzir o que parece confuso e transformar compreensão em direção.</p>
+      <div class="assina"><img class="assina-foto" src="${FOTOS["ana-tablet"]}" alt="Ana Paula Costa"><div><b>Você não está sozinha nessa.</b>Mais segurança para começar; mais profundidade para continuar evoluindo.</div></div>
     </div>
   </section>
 
@@ -972,7 +977,7 @@ function viewInicio(){
       <p class="kicker">Quem conduz</p>
       <h2 style="margin-top:0">Ana Paula Costa</h2>
       <p style="font-weight:600;color:var(--brown)">Psicóloga e Supervisora Clínica, CRP 08/19957</p>
-      <p class="quote-book">Eu não ensino psicólogas apenas a contar histórias. Ajudo-as a pensar clinicamente com metáforas.</p>
+      <p class="quote-book">Uma metáfora bem contada emociona. Uma metáfora bem pensada transforma a prática clínica — e é esse raciocínio que eu ajudo você a construir.</p>
       <div class="btn-row"><a class="btn ghost" href="#/sobre">Conhecer a Ana</a></div>
     </div>
     <img class="arch" src="${FOTOS["ana-tablet"]}" alt="Ana Paula Costa sorrindo enquanto consulta um tablet">
@@ -998,7 +1003,7 @@ function viewMetaforas(){
             ${foto(m,"m-photo")}
             <h3>${esc(m.titulo)}</h3>
             <p>${esc(m.resumo)}</p>
-            ${aberta?`<span class="go">Conhecer a metáfora →</span>`:`<span class="flag">Chegando com o retorno do piloto</span>`}
+            ${aberta?`<span class="go">Conhecer a metáfora <span class="seta">→</span></span>`:`<span class="flag">Chegando com o retorno do piloto</span>`}
           </${tag}>`;}).join("")}
       </div>
     </section>`).join("")}`;
@@ -1019,7 +1024,7 @@ function viewCompreender(m){
   ${m.origem?`<div class="note amber"><p><strong>Origem da história.</strong> ${esc(m.origem)}</p></div>`:""}
   ${msg?`<h2>Mensagem central</h2><p class="message">${esc(msg)}</p>`:""}
   ${tpl(m.id+"-compreender")}
-  <div class="btn-row"><a class="btn" href="#/m/${m.id}/como-faco">Ver como eu faço</a></div>`;
+  <div class="btn-row"><a class="btn" href="#/m/${m.id}/como-faco">Ver como eu, Ana, faço na prática clínica <span class="seta">→</span></a><a class="btn ghost" href="#/m/${m.id}/autopratica">Ir para Autoprática para Psi <span class="seta">→</span></a></div>`;
 }
 
 function viewComoFaco(m){
@@ -1028,17 +1033,18 @@ function viewComoFaco(m){
   const qHTML=`<h2>Perguntas exploratórias</h2><ul class="qlist">${qs.map(q=>`<li>${esc(q)}</li>`).join("")}</ul>`;
   html=html.replace("<h2>O que pode dar errado", qHTML+"<h2>O que pode dar errado");
   return `<p class="lead" style="margin-top:0">Como eu, Ana, introduzo, conduzo e manejo esta metáfora na prática clínica.</p>${html}
-  <div class="btn-row"><a class="btn" href="#/m/${m.id}/autopratica">Seguir para a autoprática</a></div>`;
+  <div class="btn-row"><a class="btn" href="#/m/${m.id}/autopratica">Vivenciar antes de aplicar <span class="seta">→</span></a><a class="btn ghost" href="#/m/${m.id}/preparar">Preparar esta metáfora para uma sessão <span class="seta">→</span></a></div>`;
 }
 
 function viewAutopratica(m){
   return `
   <h2 style="margin-top:0">Autoprática para Psi</h2>
   <p class="muted" style="font-weight:600">Vivencie antes de aplicar.</p>
+  <p>Autopraticar não substitui sua terapia pessoal nem a sua supervisão clínica — nenhuma das duas perde espaço aqui. É mais uma ferramenta: um momento seu, antes de usar esta metáfora com alguém, para perceber o que ela toca em você. Essa percepção é o que constrói o raciocínio clínico que sustenta a metáfora na sessão — você não está apenas memorizando uma história, está compreendendo por que ela funciona.</p>
   <div class="note"><p>Suas respostas ficam salvas somente neste navegador.</p></div>
   <form data-auto="${m.id}" onsubmit="return false">${tpl(m.id+"-auto")}</form>
   <p class="saved" id="savedAuto"></p>
-  <div class="btn-row"><a class="btn" href="#/m/${m.id}/preparar">Preparar uma aplicação</a></div>`;
+  <div class="btn-row"><a class="btn" href="#/m/${m.id}/preparar">Preparar esta metáfora para uma sessão <span class="seta">→</span></a></div>`;
 }
 function hydrateAuto(m){
   const saved=(store.get(K_AUTO,{})[m.id])||{};
@@ -1146,7 +1152,7 @@ function viewCompartilhar(m){
     <h2 style="margin-top:0">Compartilhar com a pessoa atendida</h2>
     <p class="lead">Somente o que você escolher abaixo entra no material. Suas anotações, a leitura clínica e a autoprática permanecem privadas.</p>
     ${m.origem?`<div class="note amber"><p><strong>Antes de compartilhar fora do piloto,</strong> confirme a autoria e os direitos de uso desta história.</p></div>`:""}
-    ${msg?`<label style="display:flex;gap:10px;align-items:center;margin:10px 0;cursor:pointer;font-weight:600"><input type="checkbox" data-share="msg" ${sel.msg?"checked":""} style="width:18px;height:18px;accent-color:var(--copper)">Incluir a mensagem da história</label>`:""}
+    ${msg?`<label style="display:flex;gap:10px;align-items:center;margin:10px 0;cursor:pointer;font-weight:600"><input type="checkbox" data-share="msg" ${sel.msg?"checked":""} style="width:18px;height:18px;accent-color:var(--copper)">Incluir a mensagem da metáfora</label>`:""}
     <fieldset style="border:0;padding:0;margin:14px 0"><legend style="font-weight:700;margin-bottom:6px">Perguntas para reflexão</legend>
       <ul class="checks">${qs.map((q,i)=>`<li><label><input type="checkbox" data-share="q" data-i="${i}" ${sel.qs.includes(i)?"checked":""}>${esc(q)}</label></li>`).join("")}</ul></fieldset>
     <div class="field"><label for="mov">Um pequeno movimento para a semana<span class="hint">Opcional. Escreva de forma geral, sem dados da sessão.</span></label><textarea id="mov" data-share="mov">${esc(sel.mov)}</textarea></div>
@@ -1166,7 +1172,7 @@ function sheetHTML(m){
   const story=[...t.content.children].filter(el=>!el.classList.contains("pendente")).map(el=>el.outerHTML).join("");
   const chosen=sel.qs.slice().sort((a,b)=>a-b).map(i=>qs[i]);
   return `<h2>${esc(m.titulo)}</h2><div class="story">${story}</div>${m.credito?`<p class="origem">${esc(m.credito)}</p>`:""}
-    ${sel.msg&&msg?`<h3>O que essa história pode nos ajudar a pensar</h3><p>${esc(msg)}</p>`:""}
+    ${sel.msg&&msg?`<h3>O que essa metáfora pode nos ajudar a pensar</h3><p>${esc(msg)}</p>`:""}
     ${chosen.length?`<h3>Para refletir, se fizer sentido para você</h3><ul>${chosen.map(q=>`<li>${esc(q)}</li>`).join("")}</ul>`:""}
     ${sel.mov.trim()?`<h3>Um pequeno movimento</h3><p>${esc(sel.mov)}</p>`:""}`;
 }
@@ -1174,7 +1180,7 @@ function shareText(m){
   const sel=shareSel[m.id], qs=perguntas(m.id), msg=tplText(m.id+"-mensagem");
   let t=`${m.titulo}\n\n${storyText(m.id)}`;
   if(m.credito) t+=`\n\n${m.credito}`;
-  if(sel.msg&&msg) t+=`\n\nO que essa história pode nos ajudar a pensar\n${msg}`;
+  if(sel.msg&&msg) t+=`\n\nO que essa metáfora pode nos ajudar a pensar\n${msg}`;
   const chosen=sel.qs.slice().sort((a,b)=>a-b).map(i=>qs[i]);
   if(chosen.length) t+=`\n\nPara refletir, se fizer sentido para você\n${chosen.map(q=>"• "+q).join("\n")}`;
   if(sel.mov.trim()) t+=`\n\nUm pequeno movimento\n${sel.mov.trim()}`;
@@ -1196,7 +1202,7 @@ function viewSobre(){
       <h1>Ana Paula Costa</h1>
       <p style="font-weight:600;color:var(--brown)">Psicóloga e Supervisora Clínica, CRP 08/19957</p>
       <p>Especialista em Terapia Cognitivo-Comportamental, com formação em Terapia do Esquema, Teoria do Apego, Relação Terapêutica, Supervisão e Avaliação Neuropsicológica.</p>
-      <p class="quote-book">Eu não ensino psicólogas apenas a contar histórias. Ajudo-as a pensar clinicamente com metáforas.</p>
+      <p class="quote-book">Uma metáfora bem contada emociona. Uma metáfora bem pensada transforma a prática clínica — e é esse raciocínio que eu ajudo você a construir.</p>
       <p>Este aplicativo reúne aquilo que eu gostaria de ter encontrado no começo da prática clínica: fundamentação, direção, autoprática, preparação e liberdade para adaptar a intervenção à singularidade de cada pessoa.</p>
     </div>
     <img class="arch" src="${IMG.ana}" alt="Ana Paula Costa em seu consultório, escrevendo em um tablet">
@@ -1218,9 +1224,12 @@ function viewSobre(){
 const K_RET="pdm:retorno:v1";
 const WHATSAPP_NUM=""; // número da Ana com DDI e DDD, só dígitos. Vazio = a colega escolhe o contato.
 const RET_Q=[
-  {k:"uso",t:"radio",l:"Como você usou o app até agora?",o:["Usei em sessão com pacientes","Fiz a autoprática","Li e explorei","Ainda pouco"]},
-  {k:"preparada",t:"radio",l:"Quanto o app ajudou você a se sentir preparada para usar uma metáfora?",o:["Muito","Bastante","Um pouco","Pouco"]},
+  {k:"conhecimento_antes",t:"scale",l:"Antes de usar o app, qual conhecimento você já tinha sobre esta metáfora?",min:"1 · Nunca tinha ouvido falar",max:"5 · Já usava com frequência"},
+  {k:"seguranca_antes",t:"scale",l:"Antes de usar o app, o quanto você se sentia segura para usar esta metáfora com uma pessoa atendida?",min:"1 · Nada segura",max:"5 · Totalmente segura"},
+  {k:"seguranca_agora",t:"scale",l:"E agora, depois de passar pela experiência completa, o quanto você se sente segura para usar esta metáfora?",min:"1 · Nada segura",max:"5 · Totalmente segura"},
+  {k:"preparada_aplicar",t:"scale",l:"O quanto você se sente preparada para aplicar esta metáfora numa sessão, a partir de agora?",min:"1 · Ainda não me sinto pronta",max:"5 · Me sinto pronta"},
   {k:"lentes",t:"radio",l:"As três lentes (TCC, Terapia do Esquema e Apego) ajudaram a pensar o caso?",o:["Sim, muito","Em parte","Pouco","Não cheguei a ler"]},
+  {k:"autopratica",t:"radio",l:"A Autoprática para Psi ajudou você a se conhecer melhor antes de pensar em aplicar?",o:["Sim, muito","Em parte","Pouco","Não fiz a autoprática"]},
   {k:"preparar",t:"radio",l:"E a etapa Preparar e aplicar?",o:["Ajudou e usaria de novo","Ajudou, mas é longa","Não usei","Não ajudou"]},
   {k:"funcionou",t:"text",l:"O que funcionou melhor para você?"},
   {k:"faltou",t:"text",l:"O que faltou, confundiu ou atrapalhou?"},
@@ -1228,43 +1237,56 @@ const RET_Q=[
   {k:"novas",t:"text",l:"Que tema ou metáfora você gostaria de encontrar aqui?"},
   {k:"indicaria",t:"radio",l:"Você indicaria o app a uma colega?",o:["Com certeza","Provavelmente","Talvez","Não"]},
   {k:"assinaria",t:"radio",l:"Se o app fosse pago, você assinaria?",o:["Sim","Talvez, depende do valor","Não"]},
-  {k:"valor",t:"line",l:"Que valor mensal você consideraria justo?",h:"Opcional."}
+  {k:"valor",t:"line",l:"Pensando na versão final do app — 3 categorias, 2 metáforas em cada, 6 metáforas ao todo — quanto você pagaria por ele?",h:"Um valor único ou mensal, como preferir dizer. Opcional."}
 ];
 const getRet=()=>store.get(K_RET,{nome:"",metaforas:[]});
+const RET_EMAIL="psianacostalago@gmail.com";
 function viewRetorno(){
   const r=getRet();
   const completou=PILOTO_ABERTAS.some(journeyComplete);
   const q=x=>{
     if(x.t==="radio") return `<fieldset><legend>${esc(x.l)}</legend><div class="opts">${x.o.map(o=>`<label><input type="radio" name="ret-${x.k}" data-ret="${x.k}" value="${esc(o)}" ${r[x.k]===o?"checked":""}>${esc(o)}</label>`).join("")}</div></fieldset>`;
+    if(x.t==="scale") return `<fieldset><legend>${esc(x.l)}</legend><div class="opts">${[1,2,3,4,5].map(n=>`<label><input type="radio" name="ret-${x.k}" data-ret="${x.k}" value="${n}" ${r[x.k]===String(n)?"checked":""}>${n}</label>`).join("")}</div><p class="scale-hint"><span>${esc(x.min)}</span><span>${esc(x.max)}</span></p></fieldset>`;
     const hint=x.h?`<span class="hint">${esc(x.h)}</span>`:"";
     if(x.t==="line") return `<div class="field ret-q"><label for="ret-${x.k}">${esc(x.l)}${hint}</label><input type="text" id="ret-${x.k}" data-ret="${x.k}" value="${esc(r[x.k]||"")}"></div>`;
     return `<div class="field ret-q"><label for="ret-${x.k}">${esc(x.l)}${hint}</label><textarea id="ret-${x.k}" data-ret="${x.k}">${esc(r[x.k]||"")}</textarea></div>`;
   };
   return `<div class="narrow"><h1>Seu retorno sobre o piloto</h1>
   <p class="lead">${completou?"Você concluiu a experiência completa com a metáfora do piloto. Obrigada por chegar até aqui.":"Obrigada por testar comigo."} Suas respostas vão decidir o que permanece, o que muda e o que ainda falta antes de o app chegar a outras colegas.</p>
-  <div class="note"><p>As respostas ficam guardadas neste navegador até você enviar. Nada vai para um servidor: você me manda o texto pelo WhatsApp ou copia e cola onde preferir. Não inclua dados que identifiquem pessoas atendidas.</p></div>
+  <div class="note"><p><strong>Seu retorno importa muito para mim.</strong> Não é só para ajustar telas e textos — é para eu entender se este caminho faz sentido para outras psicólogas, e se um dia posso oferecer isso de forma mais ampla. Leia com calma, responda o que fizer sentido e pule o que não se aplicar.</p></div>
+  <div class="note"><p>As respostas ficam guardadas neste navegador até você enviar. Você pode me mandar pelo WhatsApp, por e-mail ou copiar e colar onde preferir. Não inclua dados que identifiquem pessoas atendidas.</p></div>
   <div class="ret-form">
     <div class="field ret-q"><label for="ret-nome">Seu nome<span class="hint">Para eu saber de quem é o retorno.</span></label><input type="text" id="ret-nome" data-ret="nome" value="${esc(r.nome||"")}"></div>
     <fieldset><legend>Quais metáforas você explorou?</legend><div class="opts">${METAFORAS.map(m=>`<label><input type="checkbox" data-ret-multi="metaforas" value="${m.id}" ${(r.metaforas||[]).includes(m.id)?"checked":""}>${esc(m.titulo)}</label>`).join("")}</div></fieldset>
     ${RET_Q.map(q).join("")}
+    <div class="field ret-q"><label for="ret-mensagem">Deixe uma mensagem para mim<span class="hint">Pode ser um recado livre. Se ajudar, pense em contar: o que essa experiência despertou em você, um momento em que a metáfora fez sentido (ou não fez) e o que você sente que ainda falta para se sentir segura usando metáforas na prática.</span></label><textarea id="ret-mensagem" data-ret="mensagem">${esc(r.mensagem||"")}</textarea></div>
+    <fieldset><legend>Posso usar seu retorno como depoimento?</legend><div class="opts">
+      <label><input type="radio" name="ret-autoriza" data-ret="autoriza" value="Prefiro que fique só entre nós" ${r.autoriza==="Prefiro que fique só entre nós"?"checked":""}>Prefiro que fique só entre nós</label>
+      <label><input type="radio" name="ret-autoriza" data-ret="autoriza" value="Sim, com meu nome" ${r.autoriza==="Sim, com meu nome"?"checked":""}>Sim, pode usar meu nome</label>
+      <label><input type="radio" name="ret-autoriza" data-ret="autoriza" value="Sim, com meu nome e foto" ${r.autoriza==="Sim, com meu nome e foto"?"checked":""}>Sim, pode usar meu nome e foto</label>
+    </div><p class="hint">Se topar com foto, combinamos separadamente como você me envia.</p></fieldset>
   </div>
   <p class="saved" id="savedRet"></p>
   <div class="btn-row">
     <a class="btn" id="retWa" href="${retWaLink()}" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+    <a class="btn ghost" id="retMail" href="${retMailLink()}">Enviar por e-mail</a>
     <button class="btn ghost" type="button" data-act="ret-copiar">Copiar respostas</button>
     <button class="btn small danger" type="button" data-act="ret-limpar">Apagar respostas</button>
   </div>
-  <p class="muted" style="font-size:.88rem">Se o WhatsApp não abrir, use Copiar respostas e cole na conversa comigo.</p></div>`;
+  <p class="muted" style="font-size:.88rem">Se o WhatsApp não abrir, use Copiar respostas e cole na conversa comigo, ou mande por e-mail para ${esc(RET_EMAIL)}.</p></div>`;
 }
 function retText(){
   const r=getRet(); const L=["Retorno do piloto — O Poder das Metáforas",""];
   L.push("Nome: "+(r.nome||"(não informado)"));
   L.push("Metáforas exploradas: "+((r.metaforas||[]).map(id=>find(id)?.titulo).filter(Boolean).join(", ")||"(nenhuma marcada)"));
   RET_Q.forEach(x=>{ const v=(r[x.k]||"").trim(); if(v){ L.push(""); L.push(x.l); L.push(v); } });
+  if((r.mensagem||"").trim()){ L.push(""); L.push("Mensagem para a Ana"); L.push(r.mensagem.trim()); }
+  L.push(""); L.push("Autoriza usar como depoimento: "+(r.autoriza||"(não respondido)"));
   return L.join("\n");
 }
 function retWaLink(){ return `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(retText())}`; }
-function saveRet(k,v){ const r=getRet(); r[k]=v; if(store.set(K_RET,r)){ const a=document.getElementById("retWa"); if(a) a.href=retWaLink(); const el=document.getElementById("savedRet"); if(el){ el.textContent="Respostas guardadas neste navegador"; clearTimeout(el._h); el._h=setTimeout(()=>el.textContent="",1800); } } }
+function retMailLink(){ return `mailto:${RET_EMAIL}?subject=${encodeURIComponent("Retorno do piloto — O Poder das Metáforas")}&body=${encodeURIComponent(retText())}`; }
+function saveRet(k,v){ const r=getRet(); r[k]=v; if(store.set(K_RET,r)){ const a=document.getElementById("retWa"); if(a) a.href=retWaLink(); const b=document.getElementById("retMail"); if(b) b.href=retMailLink(); const el=document.getElementById("savedRet"); if(el){ el.textContent="Respostas guardadas neste navegador"; clearTimeout(el._h); el._h=setTimeout(()=>el.textContent="",1800); } } }
 
 /* ---------- roteamento ---------- */
 function parse(){
