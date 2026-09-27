@@ -299,6 +299,14 @@ textarea:focus,input[type=text]:focus{border-color:var(--copper);outline:none;bo
 .toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 20px;border-radius:99px;font-size:.9rem;font-weight:600;z-index:60;opacity:0;pointer-events:none;transition:opacity .2s}
 .toast.on{opacity:1}
 @media (prefers-reduced-motion:reduce){.toast{transition:none}}
+
+@media print{
+  .topbar,.nav,.journey,.journey-progress,.back,.site-foot,.toast,.faixa,.divider,.no-print{display:none!important}
+  body{background:#fff}
+  main{padding:0;max-width:none}
+  .share-sheet,.block,.case,.risk,.ap-step{box-shadow:none;border-color:#ccc}
+  a[href]::after{content:""}
+}
 </style>
 </head>
 <body>
@@ -1096,9 +1104,11 @@ function viewPreparar(m,params){
   const tab=params.tab||"antes";
   return `
   <a class="back" href="#/m/${m.id}/preparar">Voltar para as preparações</a>
-  <div class="field" style="max-width:420px"><label for="cod">Codinome<span class="hint">Algo que só você reconheça, sem dados identificáveis.</span></label>
+  <div class="note"><p><strong>Lembrete de confidencialidade.</strong> Use codinomes. Não inclua nome, idade, local ou qualquer dado que identifique a pessoa atendida — nem aqui, nem no material impresso.</p></div>
+  <div class="field" style="max-width:420px"><label for="cod">Codinome<span class="hint no-print">Algo que só você reconheça, sem dados identificáveis.</span></label>
     <input type="text" id="cod" data-reg="${reg.id}" data-path="codinome" value="${esc(reg.codinome)}" placeholder="Ex.: Pessoa da terça"></div>
-  <div class="tabs" role="tablist">${[["antes","Antes"],["durante","Durante"],["depois","Depois"]].map(([k,l])=>`<button role="tab" aria-selected="${k===tab}" data-act="tab" data-tab="${k}" data-reg="${reg.id}" data-m="${m.id}">${l}</button>`).join("")}</div>
+  <p class="kicker">${tab==="antes"?"Antes":tab==="durante"?"Durante":"Depois"}</p>
+  <div class="tabs no-print" role="tablist">${[["antes","Antes"],["durante","Durante"],["depois","Depois"]].map(([k,l])=>`<button role="tab" aria-selected="${k===tab}" data-act="tab" data-tab="${k}" data-reg="${reg.id}" data-m="${m.id}">${l}</button>`).join("")}</div>
   ${tab==="antes"?`
     <fieldset style="border:0;padding:0;margin:0 0 20px"><legend style="font-weight:700;margin-bottom:6px">Antes de levar para a sessão</legend>
       <ul class="checks">${CHECKS.map((c,i)=>`<li><label><input type="checkbox" data-reg="${reg.id}" data-check="${i}" ${reg.checks.includes(i)?"checked":""}>${esc(c)}</label></li>`).join("")}</ul></fieldset>
@@ -1110,7 +1120,7 @@ function viewPreparar(m,params){
     <div class="block">${guiaHTML(reg)}</div>`:""}
   ${tab==="depois"?CAMPOS_DEPOIS.map(([k,l,h])=>fieldHTML(reg,"depois",k,l,h)).join(""):""}
   <p class="saved" id="savedReg"></p>
-  <div class="btn-row no-print"><button class="btn ghost small" data-act="copiar-reg" data-reg="${reg.id}">Copiar registro</button><a class="btn ghost small" href="#/m/${m.id}/compartilhar">Preparar material para compartilhar</a></div>`;
+  <div class="btn-row no-print"><button class="btn ghost small" data-act="copiar-reg" data-reg="${reg.id}">Copiar registro</button><button class="btn ghost small" onclick="window.print()">Imprimir ou salvar em PDF</button><a class="btn ghost small" href="#/m/${m.id}/compartilhar">Preparar material para compartilhar</a></div>`;
 }
 const GUIA=["Peça permissão e deixe claro que a história pode não fazer sentido.","Conte devagar, com pausas, como numa conversa em um banco de praça.","Observe expressão, respiração e o trecho em que algo muda.","Espere. O silêncio depois da história também é informação.","Pergunte de forma aberta e deixe a pessoa escolher o trecho.","Não entregue a interpretação pronta."];
 function guiaHTML(reg){
@@ -1159,7 +1169,7 @@ function viewCompartilhar(m){
     <h3>Prévia do material</h3>
   </div>
   <article class="share-sheet" id="sheet">${sheetHTML(m)}</article>
-  <div class="btn-row no-print"><button class="btn" data-act="copiar-share" data-m="${m.id}">Copiar texto</button></div>
+  <div class="btn-row no-print"><button class="btn" data-act="copiar-share" data-m="${m.id}">Copiar texto</button><button class="btn ghost" onclick="window.print()">Imprimir ou salvar em PDF</button></div>
   ${journeyComplete(m.id)?`
   <div class="note narrow no-print" style="margin-top:44px">
     <p><strong>Você percorreu a experiência completa com ${esc(m.titulo)}.</strong> Antes de seguir, separei um espaço para você deixar suas notas — elas vão decidir o que permanece, o que muda e o que ainda falta antes de esta jornada chegar às outras metáforas.</p>
